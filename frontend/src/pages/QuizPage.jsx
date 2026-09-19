@@ -26,7 +26,7 @@ const QuizPage = () => {
       for (let word of recentWords) {
         try {
           const res = await fetch(
-            `http://127.0.0.1:8000/api/meaning/${word}`
+            `${import.meta.env.VITE_API_URL}/api/meaning/${word}`
           );
           const data = await res.json();
           if (data[0]?.meanings?.[0]?.definitions?.[0]?.definition) {

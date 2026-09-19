@@ -82,7 +82,7 @@ const Dashboard = () => {
       setLoading(true);
       setMeaning(null);
 
-      const res = await axios.get(`http://127.0.0.1:8000/api/meaning/${w}`);
+     const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/meaning/${w}`);
       if (!res.data || !res.data[0] || !res.data[0].meanings) {
         throw new Error("No data found");
       }
