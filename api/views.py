@@ -9,12 +9,23 @@ from rest_framework import status
 @api_view(['GET'])
 def getMeaning(request, word):
     url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
-    res = requests.get(url, timeout=10) 
 
-    if res.status_code == 200:
-        return Response(res.json())
-    else:
-        return Response({"error": "Word not found"}, status=404)
+    try:
+        res = requests.get(url, timeout=30)
+
+        if res.status_code == 200:
+            return Response(res.json())
+
+        return Response(
+            {"error": "Word not found"},
+            status=404
+        )
+
+    except requests.RequestException as e:
+        return Response(
+            {"error": "Dictionary service unavailable", "details": str(e)},
+            status=503
+        )
 
 
 @api_view(['POST'])
