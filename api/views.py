@@ -9,7 +9,7 @@ from rest_framework import status
 @api_view(['GET'])
 def getMeaning(request, word):
     url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
-    res = requests.get(url) 
+    res = requests.get(url, timeout=10) 
 
     if res.status_code == 200:
         return Response(res.json())
