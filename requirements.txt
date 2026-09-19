@@ -1,0 +1,9 @@
+Django==5.2.6
+django-cors-headers==4.9.0
+djangorestframework==3.16.1
+djangorestframework-simplejwt==5.5.1
+python-dotenv==1.2.3
+requests==2.32.2
+gunicorn==26.2.0
+dj-database-url==3.1.2
+psycopg2-binary==2.9.10
